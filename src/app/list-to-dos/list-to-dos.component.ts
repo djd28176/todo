@@ -24,16 +24,29 @@ export class ListToDosComponent {
     new Todo(2, 'Become an Expert at Angular',false, new Date()),
     new Todo(3, 'hello', false, new Date())
   ]
+  message: string =''
   // todo = {
   //   id : 1,
   //   description: 'Learn to Dance'
   // }
   constructor(private todoService: TodoDataService){}
   ngOnInit(){
+    this.refreshToDos();
+  }
+  refreshToDos(){
     this.todoService.retrieveAllItems('test').subscribe(
       response => {
         console.log(response);
-
+      }
+    )
+  }
+  deleteToDo(id: number) {
+    console.log(`delete todo ${id}`)
+    this.todoService.deleteToDo('username',id).subscribe(
+      response =>{
+        console.log(response);
+        this.message = 'Delete Successful!';
+        this.refreshToDos();
       }
     )
   }

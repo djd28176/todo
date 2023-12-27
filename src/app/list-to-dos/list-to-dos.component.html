@@ -13,6 +13,7 @@
                 <td>{{todo.description}}</td>
                 <td>{{todo.targetDate | date}}</td>
                 <td>{{todo.done}}</td>
+                <td><button (click)="deleteToDo(todo.id)" class="btn btn-warning">Delete(Fake URL)</button></td>
             </tr>
         </tbody>
     </table>
