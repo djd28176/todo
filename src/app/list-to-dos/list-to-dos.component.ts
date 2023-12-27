@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { TodoDataService } from '../service/data/todo-data.service';
 
 export class Todo{
   constructor(
@@ -27,4 +28,13 @@ export class ListToDosComponent {
   //   id : 1,
   //   description: 'Learn to Dance'
   // }
+  constructor(private todoService: TodoDataService){}
+  ngOnInit(){
+    this.todoService.retrieveAllItems('test').subscribe(
+      response => {
+        console.log(response);
+
+      }
+    )
+  }
 }
